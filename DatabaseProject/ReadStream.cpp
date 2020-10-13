@@ -31,11 +31,12 @@ public:
         int i=0;
         while (read(file,c,1) != '\n'){
             if(i < size){
-                char buffer[i]=c;
+                buffer[i]=*c;
             }
             else{
                 i=0
             }
+			i++;
         }
         delete[] buffer;
     }
