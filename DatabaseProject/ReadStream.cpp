@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include<io.h>
 #include <fcntl.h>
+#include <iostream>
 
 class ReadStream
 {
@@ -17,7 +18,9 @@ public:
 	}
 	void readln(){
 		char* c = NULL;
-		while (read(file,c,1) != '\n'){}
+		while (read(file,c,1) != '\n'){
+			
+		}
 
 	}
 	void seek(int pos){}
