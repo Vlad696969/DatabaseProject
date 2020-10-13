@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include<io.h>
 #include <fcntl.h>
+#include <iostream>
+
 ReadStream::void CustomOpen(char* filename){
     file = open(filename,O_RDONLY);
     if (file < 0) {
