@@ -3,7 +3,7 @@
 
 class ReadStream
 {
-	FILE* file;
+	int file;
 public:
 	void CustomOpen(char* filename);
 	void readln();
