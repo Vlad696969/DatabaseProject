@@ -5,49 +5,46 @@
 #include <fcntl.h>
 #include <iostream>
 
-ReadStream::void CustomOpen(char* filename){
-    file = open(filename,O_RDONLY);
-    if (file < 0) {
-        perror("Unable to open file");
-    }
-}
 
-ReadStream::void readln(){
+void ReadStream::readln(){
     char* c = NULL;
     while (read(file,c,1) != '\n'){}
 }
 
-ReadStream::void readln2() {
+void ReadStream::readln2() {
     char buffer[128];
     while ( fgets(buffer, 128, fileptr) != NULL ) {
-        cout << buffer << endl;
+        std::cout << buffer << std::endl;
     }
-    fclose(fp);
 }
 
-ReadStream::void readln3(){
+void ReadStream::readln3(){
     char* c = NULL;
     int i=0;
     while (read(file,c,1) != '\n'){
         if(i < size){
-            char buffer[i]=c;
+            buffer[i]=*c;
         }
         else{
-            i=0
+            i = 0;
         }
     }
 }
 
-ReadStream::void seek(int pos){}
+void ReadStream::seek(int pos){}
 
-ReadStream::bool end_of_stream(){}
+bool ReadStream::end_of_stream(){}
 
-ReadStream::void customOpen2(char* filepath) {
-    fileptr = open(filepath,"r");
+void ReadStream::open(char* filepath) {
+    fileptr = fopen(filepath,"r");
+    file = fileno(fileptr);
     if (file == NULL) {
-        perror("Unable to open the file.%s\n", filepath);
+        perror("Unable to open the file.\n");
     }
 }
+
 ReadStream::~ReadStream(){
     delete[] buffer;
+    close(file);
+    fclose(fileptr);
 }
