@@ -8,6 +8,8 @@
 class ReadStream
 {
 	int file;
+    int size = 100;
+
 public:
 	void CustomOpen(char* filename){
 		
@@ -23,6 +25,20 @@ public:
 		}
 
 	}
+    void readln2(){
+        char* c = NULL;
+        char* buffer = new char[size];
+        int i=0;
+        while (read(file,c,1) != '\n'){
+            if(i < size){
+                char buffer[i]=c;
+            }
+            else{
+                i=0
+            }
+        }
+        delete[] buffer;
+    }
 	void seek(int pos){}
 	bool end_of_stream(){}
 };
