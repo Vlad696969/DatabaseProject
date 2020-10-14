@@ -6,19 +6,24 @@
 #include <iostream>
 
 
-void ReadStream::readln(){
+void ReadStream::readln() {
+    if (!checkStream) throw new StreamException()
+
     char* c = NULL;
     while (read(file,c,1) != '\n'){}
 }
 
 void ReadStream::readln2() {
-    char buffer[128];
+    if (!checkStream) throw new StreamException()
+
     while ( fgets(buffer, 128, fileptr) != NULL ) {
         std::cout << buffer << std::endl;
     }
 }
 
 void ReadStream::readln3(){
+    if (!checkStream) throw new StreamException()
+
     char* c = NULL;
     int i=0;
     while (read(file,c,1) != '\n'){
@@ -33,18 +38,29 @@ void ReadStream::readln3(){
 
 void ReadStream::seek(int pos){}
 
-bool ReadStream::end_of_stream(){}
+void ReadStream::close(){
+    fileptr = nullptr;
+    file = -1;
+}
 
-void ReadStream::open(char* filepath) {
+bool ReadStream::open(char* filepath) {
     fileptr = fopen(filepath,"r");
     file = fileno(fileptr);
-    if (file == NULL) {
-        perror("Unable to open the file.\n");
+    if (file == -1) {
+        perror("Unable to open the file: %s\n", errno);
+        return 1;
     }
+
+    return 0;
+}
+
+int ReadStream::streamCheck() {
+    return file+1; // file = -1 si erreur
 }
 
 ReadStream::~ReadStream(){
     delete[] buffer;
     close(file);
+    close(size);
     fclose(fileptr);
 }
