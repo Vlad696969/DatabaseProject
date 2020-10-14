@@ -19,14 +19,12 @@ void ReadStream::readln2() {
     char buffer[128];
     while ( fgets(buffer, sizeof(buffer), fileptr) != NULL ) {
         size_t len = strlen(buffer);
+        std::cout << buffer;
         //check to see if we have reached the end of the line 
         if (buffer[len-1] == '\n')
         {
             break; //Stop reading if we have reache the end of the line
         }
-        std::cout << buffer;
-        //empty buffer
-        buffer[0] = '\0';
     }
     std::cout << std::endl;
 }
@@ -50,10 +48,10 @@ bool ReadStream::end_of_stream(){}
 
 void ReadStream::open(char* filepath) {
     fileptr = fopen(filepath,"r");
-    file = fileno(fileptr);
     if (file == NULL) {
         perror("Unable to open the file.\n");
     }
+    file = fileno(fileptr);
 }
 
 ReadStream::~ReadStream(){
