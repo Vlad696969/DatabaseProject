@@ -45,15 +45,14 @@ void ReadStream::readln3(){
 void ReadStream::seek(int pos){}
 
 void ReadStream::close(){
-    fileptr = nullptr;
-    file = -1;
+    delete this;
 }
 
 bool ReadStream::open(char* filepath) {
     fileptr = fopen(filepath,"r");
     file = fileno(fileptr);
     if (file == -1) {
-        perror("Unable to open the file: %s\n", errno);
+        perror("Unable to open the file:\n");
         return 1;
     }
 
