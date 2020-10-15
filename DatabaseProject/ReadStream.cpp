@@ -7,45 +7,29 @@
 
 
 void ReadStream::readln() {
-    if (!checkStream) throw new StreamException()
-
     char* c = NULL;
     while (read(file,c,1) != '\n'){
         std::cout << c;
     }
     std::cout << std::endl;
-
+    
 }
 
 void ReadStream::readln2() {
-    if (!checkStream) throw new StreamException()
-
-    while ( fgets(buffer, 128, fileptr) != NULL ) {
-        std::cout << buffer
-    }
-    buffer = new char[128];
-    std::cout << std::endl;
-}
-/*
- * void ReadStream::readln2() {
     char buffer[128];
     while ( fgets(buffer, sizeof(buffer), fileptr) != NULL ) {
         size_t len = strlen(buffer);
+        std::cout << buffer;
         //check to see if we have reached the end of the line
         if (buffer[len-1] == '\n')
         {
-            break; //Stop reading if we have reache the end of the line
+            break; //Stop reading if we have reached the end of the line
         }
-        std::cout << buffer;
-        //empty buffer
-        buffer[0] = '\0';
     }
     std::cout << std::endl;
 }
- */
-void ReadStream::readln3(){
-    if (!checkStream) throw new StreamException()
 
+void ReadStream::readln3(){
     char* c = NULL;
     int i=0;
     while (read(file,c,1) != '\n'){
@@ -82,7 +66,5 @@ int ReadStream::streamCheck() {
 
 ReadStream::~ReadStream(){
     delete[] buffer;
-    close(file);
-    close(size);
     fclose(fileptr);
 }
