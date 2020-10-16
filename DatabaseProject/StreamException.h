@@ -6,7 +6,6 @@ class StreamException {
     StreamException() throw();
 
     virtual const char* what() const throw();
-    virtual ~Erreur() throw();
 };
 
 

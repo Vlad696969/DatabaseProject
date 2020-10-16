@@ -45,10 +45,10 @@ void ReadStream::readln3(){
 void ReadStream::seek(int pos){}
 
 void ReadStream::close(){
-    delete this;
+    fclose(fileptr);
 }
 
-bool ReadStream::open(char* filepath) {
+bool ReadStream::open(const char* filepath) {
     fileptr = fopen(filepath,"r");
     file = fileno(fileptr);
     if (file == -1) {
@@ -64,6 +64,6 @@ int ReadStream::streamCheck() {
 }
 
 ReadStream::~ReadStream(){
-    delete[] buffer;
+    //delete[] buffer;
     fclose(fileptr);
 }

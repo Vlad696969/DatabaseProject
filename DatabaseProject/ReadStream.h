@@ -15,8 +15,7 @@ public:
     void readln3();
 	void seek(int pos);
 	void close();
-    bool open(char* filepath);
-    void close();
+    bool open(const char* filepath);
     int streamCheck();
 
 	~ReadStream();

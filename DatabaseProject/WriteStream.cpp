@@ -1,10 +1,13 @@
 #include "WriteStream.h"
 #include "StreamException.h"
 
+
+
+void WriteStream::create(char* path){}
+
 void WriteStream::writeln1(char* line) {}
 
 void WriteStream::writeln2(char* line) {
-    if (!streamCheck()) throw new StreamException();
 
     while (fgets(buffer, 128, stdin)) {
         fputs(buffer, fileptr);
@@ -17,7 +20,7 @@ bool WriteStream::open(char* filepath) {
     fileptr = fopen(filepath,"w");
     file = fileno(fileptr);
     if (file == -1) {
-        perror("Unable to open the file: %s\n", errno);
+        perror("Unable to open the file\n");
         return 1;
     }
 
@@ -31,6 +34,5 @@ void WriteStream::close() {
 
 WriteStream::~WriteStream(){
     delete[] buffer;
-    close(file);
     fclose(fileptr);
 }

@@ -9,7 +9,7 @@ class WriteStream
 
 public:
 	void create(char* path);
-	void writeln(char* line);
+	void writeln1(char* line);
     void writeln2(char* line);
     void writeln3(char* line);
 

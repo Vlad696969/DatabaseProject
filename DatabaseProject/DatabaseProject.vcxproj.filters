@@ -21,12 +21,21 @@
     <ClInclude Include="WriteStream.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StreamException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ReadStream.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WriteStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StreamException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
