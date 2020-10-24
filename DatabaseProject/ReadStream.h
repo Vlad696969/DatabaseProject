@@ -7,7 +7,7 @@ class ReadStream
 {
 private:
 	int file;
-    char* buffer;
+    char buffer[8];
 	FILE* fileptr;
 	int size;
 

@@ -1,6 +1,4 @@
 #include "WriteStream.h"
-#include "StreamException.h"
-
 
 
 void WriteStream::create(char* path){}

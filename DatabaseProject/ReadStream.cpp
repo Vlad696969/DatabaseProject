@@ -8,12 +8,16 @@
 #include <share.h>
 #include <iostream>
 #include <share.h>
-
+#include <string>
 
 void ReadStream::readln() {
-    char c[2];
-    fread(c, 1, 1, fileptr);
-    std::cout << c[0] << std::endl;
+    char c[1];
+    while (fread(c, 1, 1, fileptr) == 1) {
+        if (c[0] == '\n') { 
+            break;
+        }
+        std::cout << c[0];
+    }
     
 }
 
@@ -32,16 +36,35 @@ void ReadStream::readln2() {
 }
 
 void ReadStream::readln3(){
-    char* c = NULL;
-    int i=0;
-    while (read(file,c,1) != '\n'){
-        if(i < size){
-            buffer[i]=*c;
+    char c[1];
+    int i = 0;
+    int a;
+    while (true) {
+        a = fread(c, 1, 1, fileptr) == 1;
+        if (a != 1) {
+            for (int j = 0; j < i;j++) { std::cout << buffer[j]; }
+            break;
         }
-        else{
-            i = 0;
+        buffer[i] = c[0];
+        if (i == sizeof(buffer)) {
+            std::cout << buffer;
+            i = -1;
         }
+        if (c[0] == '\n') {
+            for (int j = 0; j <= i;j++) {std::cout << buffer[j];}
+            break;
+        }
+        i++;
     }
+    /*
+    for (int i=0;  buffer[i-1] != '\n'; i++) {
+        fread(buffer, 1, 1, fileptr);
+        if (i == sizeof(buffer)) {
+            std::cout << "AAAAAAAAAAAA" << std::endl;
+            i = 0;
+            for (int j=0; j < sizeof(buffer); j++) { std::cout << buffer[j]; }
+        }
+    }*/
 }
 
 void ReadStream::seek(int pos){}
