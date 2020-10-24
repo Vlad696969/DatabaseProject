@@ -13,9 +13,9 @@ private:
 
 
 public:
-	void readln();
-    void readln2();
-    void readln3();
+	int readln();
+    int readln2();
+    int readln3();
 	void seek(int pos);
 
 	void close();
