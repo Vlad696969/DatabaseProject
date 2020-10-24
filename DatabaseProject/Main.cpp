@@ -2,6 +2,10 @@
 #include "ReadStream.h"
 #include "WriteStream.h"
 
+void lenght(char* filename){
+    int sum = 0;
+
+}
 int main(int argc, char** argv) {
 
     ReadStream rs;

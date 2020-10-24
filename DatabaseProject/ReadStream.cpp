@@ -10,15 +10,15 @@
 #include <share.h>
 #include <string>
 
-void ReadStream::readln() {
+char ReadStream::readln() {
     char c[1];
     while (fread(c, 1, 1, fileptr) == 1) {
         if (c[0] == '\n') { 
             break;
         }
-        std::cout << c[0];
+        return c[0];
     }
-    
+  return 
 }
 
 void ReadStream::readln2() {
