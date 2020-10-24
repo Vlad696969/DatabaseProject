@@ -1,9 +1,16 @@
-#include<iostream>
+#include <fcntl.h>      /* Needed only for _O_RDWR definition */
+#include <io.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <share.h>
 #include "ReadStream.h"
-int main() {
-	std::cout << "Hello world !" << std::endl;
-	ReadStream readStream = ReadStream();
-	readStream.open("test.txt");
-	readStream.readln2();
-	readStream.close();
+
+
+int main(void)
+{
+    
+    ReadStream readstream = ReadStream();
+    readstream.open("test.txt");
+    readstream.readln();
+    readstream.close();
 }

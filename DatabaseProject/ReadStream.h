@@ -16,8 +16,6 @@ public:
 	void seek(int pos);
 	void close();
     bool open(const char* filepath);
-    int streamCheck();
-
 	~ReadStream();
 };
 

@@ -1,17 +1,19 @@
-#include "ReadStream.h"
 #pragma once
+#include "ReadStream.h"
+
+#include <fcntl.h>      /* Needed only for _O_RDWR definition */
+#include <io.h>
+#include <stdlib.h>
 #include <stdio.h>
-#include<io.h>
-#include <fcntl.h>
+#include <share.h>
 #include <iostream>
+#include <share.h>
 
 
 void ReadStream::readln() {
-    char* c = NULL;
-    while (read(file,c,1) != '\n'){
-        std::cout << c;
-    }
-    std::cout << std::endl;
+    char c[2];
+    fread(c, 1, 1, fileptr);
+    std::cout << c[0] << std::endl;
     
 }
 
@@ -45,25 +47,14 @@ void ReadStream::readln3(){
 void ReadStream::seek(int pos){}
 
 void ReadStream::close(){
-    fclose(fileptr);
+    _close(file);
 }
 
 bool ReadStream::open(const char* filepath) {
-    fileptr = fopen(filepath,"r");
-    file = fileno(fileptr);
-    if (file == -1) {
-        perror("Unable to open the file:\n");
-        return 1;
-    }
-
+    fileptr = fopen(filepath, "r");
     return 0;
 }
 
-int ReadStream::streamCheck() {
-    return file+1; // file = -1 si erreur
-}
-
 ReadStream::~ReadStream(){
-    //delete[] buffer;
-    fclose(fileptr);
+    
 }
