@@ -1,6 +1,6 @@
-#pragma once
 #include "ReadStream.h"
 
+<<<<<<< HEAD
 #include <fcntl.h>      /* Needed only for _O_RDWR definition */
 #include <io.h>
 #include <stdlib.h>
@@ -10,74 +10,69 @@
 #include <share.h>
 #include <string>
 
-char ReadStream::readln() {
+int ReadStream::readln() {
     char c[1];
+    int lenght = 0;
     while (fread(c, 1, 1, fileptr) == 1) {
-        if (c[0] == '\n') { 
-            break;
+        if (c[0] == '\n') {
+            return lenght;
         }
-        return c[0];
+        lenght++;
     }
-  return 
+    return -1;
 }
 
-void ReadStream::readln2() {
-    char buffer[128];
+int ReadStream::readln2() {
+    memset(buffer, 0, SIZE);
+    int lenght = 0;
     while ( fgets(buffer, sizeof(buffer), fileptr) != NULL ) {
         size_t len = strlen(buffer);
         std::cout << buffer;
+        lenght += len;
         //check to see if we have reached the end of the line
-        if (buffer[len-1] == '\n')
-        {
-            break; //Stop reading if we have reached the end of the line
+        if (buffer[len-1] == '\n'){
+            return len; //Stop reading if we have reached the end of the line
         }
+        
     }
-    std::cout << std::endl;
+    return -1;
 }
 
-void ReadStream::readln3(){
+int ReadStream::readln3(){
     char c[1];
     int i = 0;
     int a;
+    int lenght
     while (true) {
         a = fread(c, 1, 1, fileptr) == 1;
         if (a != 1) {
-            for (int j = 0; j < i;j++) { std::cout << buffer[j]; }
-            break;
+            if (i = 0) {return -1;}
+            return lenght+i
         }
         buffer[i] = c[0];
         if (i == sizeof(buffer)) {
-            std::cout << buffer;
+            lenght += sizeof(buffer);
             i = -1;
         }
         if (c[0] == '\n') {
             for (int j = 0; j <= i;j++) {std::cout << buffer[j];}
-            break;
+            return lenght + i;
         }
         i++;
     }
-    /*
-    for (int i=0;  buffer[i-1] != '\n'; i++) {
-        fread(buffer, 1, 1, fileptr);
-        if (i == sizeof(buffer)) {
-            std::cout << "AAAAAAAAAAAA" << std::endl;
-            i = 0;
-            for (int j=0; j < sizeof(buffer); j++) { std::cout << buffer[j]; }
-        }
-    }*/
 }
 
 void ReadStream::seek(int pos){}
 
 void ReadStream::close(){
-    _close(file);
+    fclose(fileptr);
 }
 
-bool ReadStream::open(const char* filepath) {
+ReadStream::~ReadStream(){}
+
+ReadStream::ReadStream(const char filepath[]) {
     fileptr = fopen(filepath, "r");
-    return 0;
-}
-
-ReadStream::~ReadStream(){
-    
+    if (fileptr == nullptr) {
+        //Exception
+    }
 }
