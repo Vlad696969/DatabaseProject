@@ -3,9 +3,8 @@
 #include "WriteStream.h"
 
 int main(int argc, char** argv) {
+    ReadStream rs = ReadStream("test.txt");
 
-    ReadStream rs;
-    rs.open("test.txt");/*
     std::cout << " Readln" << std::endl;
     rs.readln();
     std::cout << " Readln3" << std::endl;*/

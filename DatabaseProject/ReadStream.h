@@ -3,13 +3,14 @@
 #include <iostream>
 #include <fstream>
 
+#define SIZE 8
+
 class ReadStream
 {
 private:
-	int file;
-    char buffer[8];
+    char buffer[SIZE];
 	FILE* fileptr;
-	int size;
+
 
 public:
 	void readln();
@@ -18,7 +19,7 @@ public:
 	void seek(int pos);
 
 	void close();
-    bool open(const char* filepath);
 	~ReadStream();
+    ReadStream(const char filepath[]);
 };
 

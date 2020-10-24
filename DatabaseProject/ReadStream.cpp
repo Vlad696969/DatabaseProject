@@ -1,19 +1,9 @@
-#pragma once
 #include "ReadStream.h"
-
-#include <fcntl.h>      /* Needed only for _O_RDWR definition */
-#include <io.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <share.h>
-#include <iostream>
-#include <share.h>
-#include <string>
 
 void ReadStream::readln() {
     char c[1];
     while (fread(c, 1, 1, fileptr) == 1) {
-        if (c[0] == '\n') { 
+        if (c[0] == '\n') {
             break;
         }
         std::cout << c[0];
@@ -22,7 +12,8 @@ void ReadStream::readln() {
 }
 
 void ReadStream::readln2() {
-    char buffer[128];
+    memset(buffer, 0, SIZE);
+
     while ( fgets(buffer, sizeof(buffer), fileptr) != NULL ) {
         size_t len = strlen(buffer);
         std::cout << buffer;
@@ -70,14 +61,14 @@ void ReadStream::readln3(){
 void ReadStream::seek(int pos){}
 
 void ReadStream::close(){
-    _close(file);
+    fclose(fileptr);
 }
 
-bool ReadStream::open(const char* filepath) {
+ReadStream::~ReadStream(){}
+
+ReadStream::ReadStream(const char filepath[]) {
     fileptr = fopen(filepath, "r");
-    return 0;
-}
-
-ReadStream::~ReadStream(){
-    
+    if (fileptr == nullptr) {
+        //Exception
+    }
 }
