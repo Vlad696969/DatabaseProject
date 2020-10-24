@@ -1,11 +1,13 @@
-#pragma once
 #include <stdio.h>
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
 
 class WriteStream
 {
 	int file;
-    char* buffer = new char[128];
-    FILE* fileptr = nullptr;
+    char* buffer;
+    FILE* fileptr;
 
 public:
 	void create(char* path);
