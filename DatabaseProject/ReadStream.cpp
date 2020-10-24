@@ -1,15 +1,5 @@
 #include "ReadStream.h"
 
-<<<<<<< HEAD
-#include <fcntl.h>      /* Needed only for _O_RDWR definition */
-#include <io.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <share.h>
-#include <iostream>
-#include <share.h>
-#include <string>
-
 int ReadStream::readln() {
     char c[1];
     int lenght = 0;
@@ -42,12 +32,12 @@ int ReadStream::readln3(){
     char c[1];
     int i = 0;
     int a;
-    int lenght
+    int lenght=0;
     while (true) {
         a = fread(c, 1, 1, fileptr) == 1;
         if (a != 1) {
-            if (i = 0) {return -1;}
-            return lenght+i
+            if (i == 0) {return -1;}
+            return lenght+i;
         }
         buffer[i] = c[0];
         if (i == sizeof(buffer)) {
