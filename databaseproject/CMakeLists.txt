@@ -15,7 +15,7 @@ set(SRCS
         Main.cpp
         ReadStream.cpp
         WriteStream.cpp
-        )
+        StreamException.cpp StreamException.h)
 set(HEADERS
         ReadStream.h
         WriteStream.h

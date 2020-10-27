@@ -1,5 +1,5 @@
 #pragma once
-#include <stdio.h>
+#include <cstdio>
 #include <iostream>
 #include <fstream>
 
@@ -17,9 +17,10 @@ public:
     int readln2();
     int readln3();
 	void seek(int pos);
+    void close();
+    void rewind();
 
-	void close();
 	~ReadStream();
-    ReadStream(const char filepath[]);
+    explicit ReadStream(const char filepath[]);
 };
 

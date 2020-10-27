@@ -15,7 +15,8 @@ void lenght(char* filename){
     rs.close();
     std::cout << sum << std::endl;
     //readln2
-    rs = ReadStream(filename);
+    rs.rewind();
+//    rs = ReadStream(filename);
     sum = 0;
     while(true){
         lenght = rs.readln2();
@@ -25,7 +26,8 @@ void lenght(char* filename){
     rs.close();
     std::cout << sum << std::endl;
     //readln3
-    rs = ReadStream(filename);
+    rs.rewind();
+//    rs = ReadStream(filename);
     sum = 0;
     while (true) {
         lenght = rs.readln3();
@@ -36,14 +38,21 @@ void lenght(char* filename){
     std::cout << sum << std::endl;
 }
 int main(int argc, char** argv) {
-    ReadStream rs = ReadStream("test.txt");
+    try {
+        ReadStream rs = ReadStream("test.txt");
 
-    std::cout << " Readln" << std::endl;
-    rs.readln();
-    std::cout << " Readln3" << std::endl;
-    rs.readln3();
-    rs.readln3();
-    rs.close();
+        std::cout << "=== Readln1 ===" << std::endl;
+        rs.readln();
+        std::cout << "=== Readln2 ===" << std::endl;
+        rs.readln2();
+        std::cout << "=== Readln3 ===" << std::endl;
+        rs.readln3();
+
+        rs.close();
+    } catch (std::exception e) {
+        std::cout << "Exception\n";
+    }
+
 
 }
 
