@@ -197,6 +197,33 @@ ReadStream.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/database_project.dir/build.make CMakeFiles/database_project.dir/ReadStream.cpp.s
 .PHONY : ReadStream.cpp.s
 
+StreamException.o: StreamException.cpp.o
+
+.PHONY : StreamException.o
+
+# target to build an object file
+StreamException.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/database_project.dir/build.make CMakeFiles/database_project.dir/StreamException.cpp.o
+.PHONY : StreamException.cpp.o
+
+StreamException.i: StreamException.cpp.i
+
+.PHONY : StreamException.i
+
+# target to preprocess a source file
+StreamException.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/database_project.dir/build.make CMakeFiles/database_project.dir/StreamException.cpp.i
+.PHONY : StreamException.cpp.i
+
+StreamException.s: StreamException.cpp.s
+
+.PHONY : StreamException.s
+
+# target to generate assembly for a file
+StreamException.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/database_project.dir/build.make CMakeFiles/database_project.dir/StreamException.cpp.s
+.PHONY : StreamException.cpp.s
+
 WriteStream.o: WriteStream.cpp.o
 
 .PHONY : WriteStream.o
@@ -239,6 +266,9 @@ help:
 	@echo "... ReadStream.o"
 	@echo "... ReadStream.i"
 	@echo "... ReadStream.s"
+	@echo "... StreamException.o"
+	@echo "... StreamException.i"
+	@echo "... StreamException.s"
 	@echo "... WriteStream.o"
 	@echo "... WriteStream.i"
 	@echo "... WriteStream.s"
